@@ -2,15 +2,14 @@ package Task;
 
 import java.time.LocalDateTime;
 
-public class YearlyTask extends Task{
-
-    public YearlyTask() {
+public class OneTimeTask extends Task{
+    public OneTimeTask() {
         super();
     }
 
     @Override
     public boolean appearsln(LocalDateTime time) {
-        if (time.isAfter(getDateTime().plusYears(1)))
+        if (!getDateTime().equals(time))
             return true;
         else return false;
     }
