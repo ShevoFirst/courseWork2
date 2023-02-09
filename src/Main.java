@@ -13,9 +13,11 @@ public class Main {
                 stream().
                 forEach(System.out::println);
         taskService.delete(0);
+        taskService.updateDescription();
         System.out.println();
         taskService.getAllByDate(LocalDate.of(2024,3,9)).
                 stream().
                 forEach(System.out::println);
+        taskService.getRemovedTask();
     }
 }
