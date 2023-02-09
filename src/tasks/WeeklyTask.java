@@ -1,4 +1,4 @@
-package Task;
+package tasks;
 
 import java.time.LocalDateTime;
 
@@ -9,7 +9,8 @@ public class WeeklyTask extends Task{
 
     @Override
     public boolean appearsln(LocalDateTime time) {
-        if (time.isAfter(getDateTime().plusWeeks(1)))
+        if (time.toLocalDate().getDayOfWeek() == getDateTime().toLocalDate().getDayOfWeek()
+                && !time.isBefore(getDateTime()))
         return true;
         else return false;
     }

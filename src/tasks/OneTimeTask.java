@@ -1,4 +1,4 @@
-package Task;
+package tasks;
 
 import java.time.LocalDateTime;
 
@@ -9,8 +9,7 @@ public class OneTimeTask extends Task{
 
     @Override
     public boolean appearsln(LocalDateTime time) {
-        if (!getDateTime().equals(time))
-            return true;
-        else return false;
+            return time.toLocalDate().equals(getDateTime().toLocalDate())
+                    && !time.isBefore(getDateTime());
     }
 }

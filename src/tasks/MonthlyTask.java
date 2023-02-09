@@ -1,4 +1,4 @@
-package Task;
+package tasks;
 
 import java.time.LocalDateTime;
 
@@ -9,8 +9,7 @@ public class MonthlyTask extends Task{
 
     @Override
     public boolean appearsln(LocalDateTime time) {
-        if (time.isAfter(getDateTime().plusMonths(1)))
-        return true;
-        else return false;
+        return time.toLocalDate().getDayOfMonth() == getDateTime().toLocalDate().getDayOfMonth()
+                && !time.isBefore(getDateTime());
     }
 }

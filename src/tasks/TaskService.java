@@ -1,7 +1,6 @@
-package Task;
+package tasks;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -21,13 +20,24 @@ public class TaskService {
 
     public Collection<Task> getAllByDate(LocalDate time){
         Collection<Task> tasks = new ArrayList<>();
-        for (int i = 0; i < taskMap.size(); i++) {
-            if (taskMap.get(i).getDateTime().toLocalDate().isBefore(time)){
-                tasks.add(taskMap.get(i));
-            }
+
+        for (Task value : taskMap.values()) {
+            if (value.appearsln(time.atStartOfDay()))
+                tasks.add(value);
         }
+
         if (tasks.isEmpty())
-            throw new IllegalArgumentException("таблица на этот день не найдена");
+            throw new TaskNotFoundException("таблица на этот день не найдена");
+
         return tasks;
+    }
+
+    public class TaskNotFoundException extends RuntimeException{
+
+        public TaskNotFoundException() {super();}
+
+        public TaskNotFoundException(String message) {
+            super(message);
+        }
     }
 }

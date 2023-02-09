@@ -1,4 +1,4 @@
-package Task;
+package tasks;
 
 import java.time.LocalDateTime;
 
@@ -10,8 +10,6 @@ public class DailyTask extends Task{
 
     @Override
     public boolean appearsln(LocalDateTime time) {
-        if (time.isAfter(getDateTime()))
-            return true;
-        else return false;
+        return !time.isBefore(getDateTime());
     }
 }

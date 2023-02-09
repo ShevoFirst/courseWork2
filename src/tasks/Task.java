@@ -1,4 +1,4 @@
-package Task;
+package tasks;
 
 import java.time.LocalDateTime;
 import java.util.Scanner;
@@ -16,8 +16,9 @@ public abstract class Task {
         idGenerator++;
         System.out.print("введите заголовок для вашей задачи(обязательно): ");
         this.title = new Scanner(System.in).nextLine();
+
         if(title.isEmpty())
-            throw new IllegalArgumentException("Отсутсвует заголовок");
+            throw new IncorrectArgumentException("Отсутсвует заголовок");
 
         System.out.print("введите тип вашей задачи(Рабочая - 1, Персональная - 2): ");
         if (new Scanner(System.in).nextInt() == 1)
@@ -28,6 +29,7 @@ public abstract class Task {
         description = new Scanner(System.in).nextLine();
 
         dateTime = LocalDateTime.now();
+        System.out.println();
     }
 
     abstract public boolean appearsln(LocalDateTime time);
@@ -69,5 +71,13 @@ public abstract class Task {
                 ", dateTime=" + dateTime +
                 ", description='" + description + '\'' +
                 '}';
+    }
+    public class IncorrectArgumentException extends RuntimeException{
+
+        public IncorrectArgumentException() {super();}
+
+        public IncorrectArgumentException(String message) {
+            super(message);
+        }
     }
 }

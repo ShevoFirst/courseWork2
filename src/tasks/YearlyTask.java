@@ -1,4 +1,4 @@
-package Task;
+package tasks;
 
 import java.time.LocalDateTime;
 
@@ -10,8 +10,7 @@ public class YearlyTask extends Task{
 
     @Override
     public boolean appearsln(LocalDateTime time) {
-        if (time.isAfter(getDateTime().plusYears(1)))
-            return true;
-        else return false;
+        return time.toLocalDate().getDayOfYear() == getDateTime().toLocalDate().getDayOfYear()
+                && !time.isBefore(getDateTime());
     }
 }
