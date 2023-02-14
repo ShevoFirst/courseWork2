@@ -3,8 +3,8 @@ package tasks;
 import java.time.LocalDateTime;
 
 public class MonthlyTask extends Task{
-    public MonthlyTask() {
-        super();
+    public MonthlyTask(int type, String title, String description) {
+        super(type, title, description);
     }
 
     @Override

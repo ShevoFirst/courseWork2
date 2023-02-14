@@ -11,22 +11,21 @@ public abstract class Task {
     private final LocalDateTime dateTime;
     private String description;
 
-    public Task() {
+    public Task(int type, String title, String description) {
         this.id = idGenerator;
         idGenerator++;
         System.out.print("введите заголовок для вашей задачи(обязательно): ");
-        this.title = new Scanner(System.in).nextLine();
-
+        this.title = title;
         if(title.isEmpty())
             throw new IncorrectArgumentException("Отсутсвует заголовок");
 
         System.out.print("введите тип вашей задачи(Рабочая - 1, Персональная - 2): ");
-        if (new Scanner(System.in).nextInt() == 1)
+        if (type == 1)
             this.type = Type.WORK;
         else this.type = Type.PERSONAL;
 
         System.out.print("введите описание задачи(по желанию): ");
-        description = new Scanner(System.in).nextLine();
+        this.description = description;
 
         dateTime = LocalDateTime.now();
         System.out.println();
@@ -71,13 +70,5 @@ public abstract class Task {
                 ", dateTime=" + dateTime +
                 ", description='" + description + '\'' +
                 '}';
-    }
-    public class IncorrectArgumentException extends RuntimeException{
-
-        public IncorrectArgumentException() {super();}
-
-        public IncorrectArgumentException(String message) {
-            super(message);
-        }
     }
 }

@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 public class DailyTask extends Task{
 
-    public DailyTask() {
-        super();
+    public DailyTask(int type, String title, String description) {
+        super(type, title, description);
     }
 
     @Override

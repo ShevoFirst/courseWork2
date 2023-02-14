@@ -3,8 +3,10 @@ package tasks;
 import java.time.LocalDateTime;
 
 public class WeeklyTask extends Task{
-    public WeeklyTask() {
-        super();
+
+
+    public WeeklyTask(int type, String title, String description) {
+        super(type, title, description);
     }
 
     @Override
