@@ -14,17 +14,14 @@ public abstract class Task {
     public Task(int type, String title, String description) {
         this.id = idGenerator;
         idGenerator++;
-        System.out.print("введите заголовок для вашей задачи(обязательно): ");
         this.title = title;
         if(title.isEmpty())
             throw new IncorrectArgumentException("Отсутсвует заголовок");
 
-        System.out.print("введите тип вашей задачи(Рабочая - 1, Персональная - 2): ");
         if (type == 1)
             this.type = Type.WORK;
         else this.type = Type.PERSONAL;
 
-        System.out.print("введите описание задачи(по желанию): ");
         this.description = description;
 
         dateTime = LocalDateTime.now();
